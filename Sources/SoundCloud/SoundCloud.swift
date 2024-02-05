@@ -180,7 +180,7 @@ private extension SoundCloud {
     
     // MARK: - Auth 🔐
     func getAuthorizationCode() async throws -> String {
-        #if os(iOS)
+        #if os(iOS) || os(visionOS)
         return try await ASWebAuthenticationSession.getAuthCode(
             from: config.authorizationURL,
             with: config.redirectURI,

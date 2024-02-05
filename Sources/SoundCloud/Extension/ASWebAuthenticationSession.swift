@@ -8,7 +8,7 @@
 import AuthenticationServices
 import Foundation
 
-#if os(iOS)
+#if os(iOS) || os(visionOS)
 public extension ASWebAuthenticationSession {
     /// Async-await wrapper for ASWebAuthenticationSession. Presents a webpage for authenticating using SSO and returns the authorization code after the user successfully signs in
     /// - Parameters:
