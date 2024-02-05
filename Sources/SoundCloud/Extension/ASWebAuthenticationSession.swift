@@ -46,7 +46,11 @@ public extension ASWebAuthenticationSession {
     
     final class ApplicationWindowContextProvider: NSObject, ASWebAuthenticationPresentationContextProviding {
         public func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
+            #if os(iOS)
             return UIApplication.shared.keyWindow!
+            #elseif os(visionOS)
+            return UIApplication.shared.connectedScenes.compactMap{ ($0 as? UIWindowScene)?.keyWindow }.last!
+            #endif
         }
     }
 }
